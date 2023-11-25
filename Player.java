@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Player {
     private String name;
@@ -15,10 +16,13 @@ public class Player {
     // Player takes a turn to guess the coordinates on the board
     public boolean takeTurn() {
         Scanner s = new Scanner(System.in);
+        int x = 0;
+        int y = 0;
+   try { 
         System.out.println("Hey " + name + ", Enter Row from 0 - 9: ");
-        int x = s.nextInt();
+        x = s.nextInt();
         System.out.println("Hey " + name + ", Enter Column from 0 - 9: ");
-        int y = s.nextInt();
+        y = s.nextInt();
         s.nextLine();
 
         // Validate the input coordinates
@@ -26,6 +30,11 @@ public class Player {
             System.out.println("Invalid input. Please enter coordinates within the range.");
             return takeTurn();
         }
+   }
+   catch (InputMismatchException e) {
+	   System.out.println("Wrong input. Try again");
+	   return takeTurn();
+   }
 
         // Get the square at the guessed coordinates
         Square guess = board.getSquare(x, y);
