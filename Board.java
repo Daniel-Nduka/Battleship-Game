@@ -34,7 +34,7 @@ public class Board {
     }
 
     // Initialise the grid with Square objects
-    public void populateBoard() {
+    private void populateBoard() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 grid[i][j] = new Square(i, j);
@@ -44,6 +44,7 @@ public class Board {
 
     // Generate battleships on the board
     public void generateBattleships() {
+    	populateBoard();
         Random r = new Random();
 
         // Generate medium, large, and small battleships

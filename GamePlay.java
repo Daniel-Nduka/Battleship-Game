@@ -19,7 +19,7 @@ public class GamePlay {
         Player two = new Player(name2, board);
 
         // Populate the game board with ships
-        board.populateBoard();
+       // board.populateBoard();
         board.generateBattleships();
 
         // Display the initial state of the board
